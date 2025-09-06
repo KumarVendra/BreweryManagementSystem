@@ -17,3 +17,45 @@ h1 {
   color: #333;
   margin-bottom: 30px;
 }
+
+/* Nav buttons in a single row */
+.nav-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* space between buttons */
+  margin-bottom: 40px;
+}
+
+.nav-buttons button {
+  padding: 15px 25px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  background-color: #4CAF50;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.nav-buttons button:hover {
+  background-color: #45a049;
+}
+
+/* Description box */
+.description {
+  text-align: left;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.description h2 {
+  margin-top: 0;
+  color: #4CAF50;
+}
+
+.description p {
+  line-height: 1.6;
+  color: #555;
+}
