@@ -62,3 +62,36 @@ table {
   overflow: hidden;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
+
+th, td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+th {
+  background-color: #f44336;
+  color: white;
+}
+
+/* Reporting */
+.reporting {
+  margin-top: 20px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Delete button */
+.delete-btn {
+  padding: 5px 10px;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+  background-color: #f44336;
+  color: white;
+}
+
+.delete-btn:hover {
+  background-color: #d32f2f;
+}
