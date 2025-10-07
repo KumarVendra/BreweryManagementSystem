@@ -1,7 +1,6 @@
 const productForm = document.getElementById("productForm");
 const API_URL = "http://localhost:3000/api/products";
 
-// Handle form submission
 productForm.addEventListener("submit", async (e) => {
   e.preventDefault();
 

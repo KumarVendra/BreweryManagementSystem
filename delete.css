@@ -16,7 +16,6 @@ h1 {
   margin-bottom: 30px;
 }
 
-/* Navigation button */
 .nav-buttons {
   margin-bottom: 20px;
 }
@@ -36,7 +35,6 @@ h1 {
   background-color: #45a049;
 }
 
-/* Search and sort */
 .search-sort {
   margin-bottom: 20px;
   display: flex;
@@ -49,7 +47,6 @@ h1 {
   font-size: 14px;
 }
 
-/* Table styling */
 .table-container {
   overflow-x: auto;
 }
@@ -74,14 +71,12 @@ th {
   color: white;
 }
 
-/* Reporting */
 .reporting {
   margin-top: 20px;
   font-weight: bold;
   color: #333;
 }
 
-/* Delete button */
 .delete-btn {
   padding: 5px 10px;
   font-size: 14px;

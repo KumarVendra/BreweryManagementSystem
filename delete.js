@@ -7,7 +7,6 @@ const totalStock = document.getElementById("totalStock");
 
 let products = [];
 
-// Fetch all products
 async function loadProducts() {
   try {
     const res = await fetch(API_URL);
@@ -19,7 +18,6 @@ async function loadProducts() {
 }
 
 
-// Render table
 function renderTable(data) {
   productTable.innerHTML = "";
   let stockSum = 0;
@@ -47,7 +45,6 @@ function renderTable(data) {
   totalStock.innerText = stockSum;
 }
 
-// Search and sort
 searchInput.addEventListener("input", () => {
   const filtered = products.filter(p => 
     p.name.toLowerCase().includes(searchInput.value.toLowerCase())
@@ -66,7 +63,6 @@ sortSelect.addEventListener("change", () => {
   renderTable(sorted);
 });
 
-// Delete product
 async function deleteProduct(id) {
   if (confirm("Are you sure you want to delete this product?")) {
     try {
@@ -79,5 +75,4 @@ async function deleteProduct(id) {
   }
 }
 
-// Initial load
 loadProducts();

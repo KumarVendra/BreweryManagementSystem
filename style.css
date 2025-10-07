@@ -18,11 +18,10 @@ h1 {
   margin-bottom: 30px;
 }
 
-/* Nav buttons in a single row */
 .nav-buttons {
   display: flex;
   justify-content: center;
-  gap: 20px; /* space between buttons */
+  gap: 20px; 
   margin-bottom: 40px;
 }
 
@@ -41,7 +40,6 @@ h1 {
   background-color: #45a049;
 }
 
-/* Description box */
 .description {
   text-align: left;
   background-color: #fff;
