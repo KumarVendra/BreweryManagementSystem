@@ -31,3 +31,33 @@ h1 {
   color: white;
   transition: background-color 0.3s ease;
 }
+
+
+.nav-buttons button:hover {
+  background-color: #45a049;
+}
+
+/* Table styling */
+.table-container {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+th, td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+th {
+  background-color: #4CAF50;
+  color: white;
+}
