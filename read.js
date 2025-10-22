@@ -6,8 +6,7 @@ async function loadProducts() {
     const res = await fetch(API_URL);
     const products = await res.json();
     
-    productTable.innerHTML = ""; // clear table
-
+    productTable.innerHTML = ""; 
     products.forEach(product => {
       const row = productTable.insertRow();
       row.insertCell(0).innerText = product.name;
@@ -22,5 +21,4 @@ async function loadProducts() {
   }
 }
 
-// Initial load
 loadProducts();
