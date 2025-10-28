@@ -21,3 +21,24 @@ const productSchema = new mongoose.Schema({
   stock: { type: Number, default: 0, min: 0 },
   size: { type: String }
 });
+
+
+const Product = mongoose.model("Product", productSchema);
+
+
+// 1. Create product
+app.post("/api/products", async (req, res) => {
+  try {
+    const { name, category, description, price, stock, size } = req.body;
+
+    if (!name || price < 0 || stock < 0) {
+      return res.status(400).json({ message: "Invalid data" });
+    }
+
+    const product = new Product({ name, category, description, price, stock, size });
+    await product.save();
+    res.status(201).json(product);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+});
