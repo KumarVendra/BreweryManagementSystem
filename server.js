@@ -51,4 +51,13 @@ app.get("/api/products", async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 });
+app.put("/api/products/:id", async (req, res) => {
+  try {
+    const { name, category, description, price, stock, size } = req.body;
+
+    // Validation
+    if (!name || price < 0 || stock < 0) {
+      return res.status(400).json({ message: "Invalid data" });
+    }
+
 
