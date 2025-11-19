@@ -1,3 +1,4 @@
+
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -22,11 +23,9 @@ const productSchema = new mongoose.Schema({
   size: { type: String }
 });
 
-
 const Product = mongoose.model("Product", productSchema);
 
 
-// 1. Create product
 app.post("/api/products", async (req, res) => {
   try {
     const { name, category, description, price, stock, size } = req.body;
@@ -51,14 +50,30 @@ app.get("/api/products", async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 });
+
 app.put("/api/products/:id", async (req, res) => {
   try {
     const { name, category, description, price, stock, size } = req.body;
 
-    // Validation
     if (!name || price < 0 || stock < 0) {
       return res.status(400).json({ message: "Invalid data" });
     }
+
+    const product = await Product.findByIdAndUpdate(
+      req.params.id,
+      { name, category, description, price, stock, size },
+      { new: true, runValidators: true }
+    );
+
+    if (!product) {
+      return res.status(404).json({ message: "Product not found" });
+    }
+
+    res.json(product);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
 
 app.delete("/api/products/:id", async (req, res) => {
   try {
@@ -71,9 +86,10 @@ app.delete("/api/products/:id", async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 });
+
+
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });
 
 module.exports = { app, Product };
-
