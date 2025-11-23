@@ -29,3 +29,10 @@ describe('Cafe Management System - CRUD API Tests', () => {
     expect(res.body.name).toBe('Latte');
     createdProductId = res.body._id;
   });
+test('POST /api/products - should fail with missing name', async () => {
+    const res = await request(app).post('/api/products').send({
+      category: 'Tea',
+      price: 2.0
+    });
+    expect(res.statusCode).toBe(400);
+  });
