@@ -36,3 +36,10 @@ test('POST /api/products - should fail with missing name', async () => {
     });
     expect(res.statusCode).toBe(400);
   });
+test('POST /api/products - should fail with negative price', async () => {
+    const res = await request(app).post('/api/products').send({
+      name: 'Espresso',
+      price: -1
+    });
+    expect(res.statusCode).toBe(400);
+  });
