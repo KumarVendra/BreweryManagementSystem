@@ -43,3 +43,9 @@ test('POST /api/products - should fail with negative price', async () => {
     });
     expect(res.statusCode).toBe(400);
   });
+   test('GET /api/products - should return array of products', async () => {
+    const res = await request(app).get('/api/products');
+    expect(res.statusCode).toBe(200);
+    expect(Array.isArray(res.body)).toBe(true);
+    createdProductId = res.body[0]._id;
+  });
