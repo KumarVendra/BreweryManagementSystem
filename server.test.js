@@ -49,3 +49,15 @@ test('POST /api/products - should fail with negative price', async () => {
     expect(Array.isArray(res.body)).toBe(true);
     createdProductId = res.body[0]._id;
   });
+  test('PUT /api/products/:id - should update product', async () => {
+    const res = await request(app).put(`/api/products/${createdProductId}`).send({
+      name: 'Latte Large',
+      price: 4.0,
+      stock: 15,
+      category: 'Coffee',
+      description: 'Large milk coffee',
+      size: 'Large'
+    });
+    expect(res.statusCode).toBe(200);
+    expect(res.body.name).toBe('Latte Large');
+  });
