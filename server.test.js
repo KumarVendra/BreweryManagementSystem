@@ -61,3 +61,17 @@ test('POST /api/products - should fail with negative price', async () => {
     expect(res.statusCode).toBe(200);
     expect(res.body.name).toBe('Latte Large');
   });
+ 
+  test('PUT /api/products/:id - should fail with invalid ID', async () => {
+    const res = await request(app).put('/api/products/123456789012').send({
+      name: 'Invalid'
+    });
+    expect(res.statusCode).toBe(404);
+  });
+
+  test('PUT /api/products/:id - should fail with negative stock', async () => {
+    const res = await request(app).put(`/api/products/${createdProductId}`).send({
+      stock: -5
+    });
+    expect(res.statusCode).toBe(400);
+  });
