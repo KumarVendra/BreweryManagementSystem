@@ -75,3 +75,44 @@ test('POST /api/products - should fail with negative price', async () => {
     });
     expect(res.statusCode).toBe(400);
   });
+ 
+  
+  test('DELETE /api/products/:id - should delete product', async () => {
+    const res = await request(app).delete(`/api/products/${createdProductId}`);
+    expect(res.statusCode).toBe(200);
+    expect(res.body.message).toBe('Product deleted successfully');
+  });
+
+  test('DELETE /api/products/:id - should return not found', async () => {
+    const res = await request(app).delete(`/api/products/${createdProductId}`);
+    expect(res.statusCode).toBe(404);
+  });
+
+  test('POST /api/products - create multiple products', async () => {
+    const products = [
+      { name: 'Cappuccino', category: 'Coffee', description: 'Foamy coffee', price: 3, stock: 20, size: 'Medium' },
+      { name: 'Mocha', category: 'Coffee', description: 'Chocolate coffee', price: 4, stock: 15, size: 'Large' }
+    ];
+    for (const product of products) {
+      const res = await request(app).post('/api/products').send(product);
+      expect(res.statusCode).toBe(201);
+    }
+  });
+
+  test('GET /api/products - should verify product count', async () => {
+    const res = await request(app).get('/api/products');
+    expect(res.statusCode).toBe(200);
+    expect(res.body.length).toBe(2); 
+  });
+
+  
+  test('POST /api/products - should fail with negative price', async () => {
+    const res = await request(app).post('/api/products').send({
+      name: 'Americano',
+      price: -2,
+      stock: 10
+    });
+    expect(res.statusCode).toBe(400);
+  });
+
+});
