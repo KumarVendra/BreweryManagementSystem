@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Update Product - Cafe</title>
+  <link rel="stylesheet" href="update.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Update Products</h1>
+
+    <div class="nav-buttons">
+      <button onclick="location.href='index.html'">Home</button>
+    </div>
+
+    <div class="search-sort">
+      <input type="text" id="searchInput" placeholder="Search by product name...">
+      <select id="sortSelect">
+        <option value="name">Sort by Name</option>
+        <option value="price">Sort by Price</option>
+        <option value="stock">Sort by Stock</option>
+      </select>
+    </div>
+
+    <div class="table-container">
+      <table id="productTable">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th>Size</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Products will appear here -->
+        </tbody>
+      </table>
+    </div>
+
+    <div class="reporting">
+      <p>Total Products: <span id="totalProducts">0</span></p>
+      <p>Total Stock: <span id="totalStock">0</span></p>
+    </div>
+  </div>
+
+  <script src="update.js"></script>
+</body>
+</html>
