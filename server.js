@@ -1,19 +1,14 @@
-
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 
 const app = express();
-const PORT = 3000;
 
 app.use(cors());
 app.use(bodyParser.json());
 
-mongoose.connect("mongodb://127.0.0.1:27017/cafeDB")
-  .then(() => console.log("MongoDB connected"))
-  .catch(err => console.error(err));
-
+// --- Product Schema ---
 const productSchema = new mongoose.Schema({
   name: { type: String, required: true },
   category: { type: String },
@@ -25,7 +20,7 @@ const productSchema = new mongoose.Schema({
 
 const Product = mongoose.model("Product", productSchema);
 
-
+// --- Routes ---
 app.post("/api/products", async (req, res) => {
   try {
     const { name, category, description, price, stock, size } = req.body;
@@ -81,15 +76,11 @@ app.delete("/api/products/:id", async (req, res) => {
     if (!product) {
       return res.status(404).json({ message: "Product not found" });
     }
+
     res.json({ message: "Product deleted successfully" });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
-});
-
-
-app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
 });
 
 module.exports = { app, Product };

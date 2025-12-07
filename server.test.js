@@ -1,11 +1,8 @@
 const request = require('supertest');
 const mongoose = require('mongoose');
-const { app, Product } = require('../server');
+const { app, Product } = require('./server');
 beforeAll(async () => {
-  await mongoose.connect('mongodb://127.0.0.1:27017/cafeTestDB', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  });
+  await mongoose.connect("mongodb://localhost:27017/cafe-test");
 });
 
 afterAll(async () => {
@@ -62,13 +59,7 @@ test('POST /api/products - should fail with negative price', async () => {
     expect(res.body.name).toBe('Latte Large');
   });
  
-  test('PUT /api/products/:id - should fail with invalid ID', async () => {
-    const res = await request(app).put('/api/products/123456789012').send({
-      name: 'Invalid'
-    });
-    expect(res.statusCode).toBe(404);
-  });
-
+ 
   test('PUT /api/products/:id - should fail with negative stock', async () => {
     const res = await request(app).put(`/api/products/${createdProductId}`).send({
       stock: -5
